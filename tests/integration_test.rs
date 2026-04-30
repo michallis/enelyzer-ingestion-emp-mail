@@ -1,7 +1,7 @@
 use enelyzer_ingestion_emp_mail::{generate_schema, parse_eml, EmpMail};
 
 /// Minimal valid EML that exercises all parsing paths.
-const MINIMAL_EML: &str = r#"From: "Energy Cockpit" <customer.page@energymarketprice.com>
+const MINIMAL_EML: &str = r##"From: "Energy Cockpit" <customer.page@energymarketprice.com>
 To: user@example.com
 Subject: My Energy Cockpit
 Date: Wed, 15 Apr 2026 10:01:11 +0200
@@ -71,7 +71,7 @@ MIME-Version: 1.0
   </tr>
 </table>
 </body></html>
-"#;
+"##;
 
 fn parsed_minimal() -> EmpMail {
     parse_eml(MINIMAL_EML.as_bytes()).expect("minimal EML should parse without errors")

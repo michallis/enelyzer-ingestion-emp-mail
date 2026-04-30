@@ -8,7 +8,6 @@ use crate::types::{
 };
 
 static RE_PCT: Lazy<Regex> = Lazy::new(|| Regex::new(r"^([+-]?\d+(?:\.\d+)?)%$").unwrap());
-static RE_UNIT: Lazy<Regex> = Lazy::new(|| Regex::new(r"\(([^)]+)\)\s*$").unwrap());
 
 /// Parse a raw `.eml` file (bytes) into an [`EmpMail`] struct.
 ///
@@ -95,66 +94,56 @@ fn extract_report_title(doc: &Html) -> String {
 }
 
 fn extract_news_items(doc: &Html) -> Vec<NewsItem> {
-    let mut items: Vec<NewsItem> = Vec::new();
+    // Each news card contains four characteristic cells in order:
+    //   1. Date   td[style*="color:#576B75"]
+    //   2. Title  td[style*="height:80px"]
+    //   3. Summary td[style*="height:144px"]
+    //   4. Link   td > a  (Read More)
+    //
+    // We collect all four lists and zip them by position.
 
-    // News articles are laid out in cards; identify by the date cell style.
     let date_sel =
         Selector::parse("td[style*='color:#576B75'][style*='font-size: 12px']").unwrap();
-    let link_sel = Selector::parse("a").unwrap();
+    let title_sel = Selector::parse("td[style*='height:80px']").unwrap();
+    let summary_sel = Selector::parse("td[style*='height:144px']").unwrap();
+    let link_td_sel = Selector::parse("td[style*='text-transform:uppercase'] a").unwrap();
 
-    for date_td in doc.select(&date_sel) {
-        let date = date_td.text().collect::<String>().trim().to_string();
-        if date.is_empty() || !date.chars().any(|c| c.is_ascii_digit()) {
-            continue;
-        }
+    let dates: Vec<String> = doc
+        .select(&date_sel)
+        .map(|e| e.text().collect::<String>().trim().to_string())
+        .filter(|s| s.chars().any(|c| c.is_ascii_digit()))
+        .collect();
 
-        // Navigate: parent tbody → sibling rows
-        let parent_table = date_td.parent().and_then(|tr| tr.parent()); // <tbody> or <table>
-        if parent_table.is_none() {
-            continue;
-        }
+    let titles: Vec<String> = doc
+        .select(&title_sel)
+        .map(|e| e.text().collect::<String>().trim().to_string())
+        .filter(|s| !s.is_empty())
+        .collect();
 
-        // Collect all text siblings in the same card table: title row, summary row, link row
-        let mut title = String::new();
-        let mut summary = String::new();
-        let mut read_more_url: Option<String> = None;
+    let summaries: Vec<String> = doc
+        .select(&summary_sel)
+        .map(|e| e.text().collect::<String>().trim().to_string())
+        .collect();
 
-        // Walk siblings from same ancestor table to find title / summary / link
-        let title_sel =
-            Selector::parse("td[style*='height:80px']").unwrap();
-        let summary_sel =
-            Selector::parse("td[style*='height:144px']").unwrap();
+    let links: Vec<Option<String>> = doc
+        .select(&link_td_sel)
+        .map(|a| {
+            a.value()
+                .attr("originalsrc")
+                .or_else(|| a.value().attr("href"))
+                .map(|s| s.to_string())
+        })
+        .collect();
 
-        // Find the enclosing card table (width=90%)
-        let mut ancestor = date_td.parent(); // <tr>
-        for _ in 0..4 {
-            ancestor = ancestor.and_then(|n| n.parent());
-        }
-        if let Some(card) = ancestor {
-            let card_html = card.html();
-            let card_doc = Html::parse_fragment(&card_html);
-
-            if let Some(t) = card_doc.select(&title_sel).next() {
-                title = t.text().collect::<String>().trim().to_string();
-            }
-            if let Some(s) = card_doc.select(&summary_sel).next() {
-                summary = s.text().collect::<String>().trim().to_string();
-            }
-            if let Some(a) = card_doc.select(&link_sel).next() {
-                read_more_url = a
-                    .value()
-                    .attr("originalsrc")
-                    .or_else(|| a.value().attr("href"))
-                    .map(|s| s.to_string());
-            }
-        }
-
-        if !title.is_empty() {
-            items.push(NewsItem { date, title, summary, read_more_url });
-        }
-    }
-
-    items
+    let n = dates.len().min(titles.len());
+    (0..n)
+        .map(|i| NewsItem {
+            date: dates[i].clone(),
+            title: titles[i].clone(),
+            summary: summaries.get(i).cloned().unwrap_or_default(),
+            read_more_url: links.get(i).cloned().flatten(),
+        })
+        .collect()
 }
 
 fn extract_statistics(doc: &Html) -> Result<Statistics, ParseError> {
@@ -198,31 +187,24 @@ fn extract_price_dates(doc: &Html) -> Vec<String> {
 }
 
 fn extract_market_sections(doc: &Html) -> Result<Vec<MarketSection>, ParseError> {
+    use scraper::ElementRef;
+
     let mut sections: Vec<MarketSection> = Vec::new();
 
-    // Section header rows: bgcolor=#330a19 with colspan=12 containing the section name.
-    let section_header_sel = Selector::parse("td[bgcolor='#330a19'][colspan='12']").unwrap();
-    let data_row_sel_light = Selector::parse("tr").unwrap();
-
-    // We'll iterate through all table rows in document order.
+    // Selectors used within each row's subtree (no fragment re-parsing needed).
+    let section_header_sel =
+        Selector::parse("td[bgcolor='#330a19'][colspan='12']").unwrap();
     let tr_sel = Selector::parse("tr").unwrap();
-    let td_sel = Selector::parse("td").unwrap();
 
     let mut current_section: Option<String> = None;
     let mut rows_buffer: Vec<MarketRow> = Vec::new();
 
     for tr in doc.select(&tr_sel) {
-        let tr_html = tr.html();
-        let tr_frag = Html::parse_fragment(&tr_html);
-
-        // Check if this row is a section header (has a td with colspan=12 and bgcolor=#330a19)
-        let is_section_header = tr_frag
-            .select(&section_header_sel)
-            .next()
-            .is_some();
+        // Check for section header: a <td bgcolor="#330a19" colspan="12"> directly inside this <tr>.
+        let is_section_header = tr.select(&section_header_sel).next().is_some();
 
         if is_section_header {
-            // Save previous section
+            // Flush previous section.
             if let Some(name) = current_section.take() {
                 if !rows_buffer.is_empty() {
                     sections.push(MarketSection {
@@ -232,54 +214,55 @@ fn extract_market_sections(doc: &Html) -> Result<Vec<MarketSection>, ParseError>
                 }
             }
 
-            // Extract section name from the nested text
-            let section_name = tr_frag
-                .select(&Selector::parse("td").unwrap())
-                .flat_map(|td| td.text())
+            // Extract section name from all text inside this row.
+            let section_name = tr
+                .text()
                 .map(|t| t.trim())
                 .filter(|t| !t.is_empty())
                 .collect::<Vec<_>>()
                 .join(" ")
-                .trim()
                 .to_uppercase();
 
-            // Clean: "ELECTRICITY", "GAS", "OIL", "OTHER"
-            let clean_name = extract_section_name(&section_name);
-            current_section = Some(clean_name);
+            current_section = Some(extract_section_name(&section_name));
             continue;
         }
 
-        // Check if this is a data row (has many td cells with price data).
-        // Data rows have alternating bgcolor: #F0F3F4 and white, with 11 columns.
-        let tds: Vec<_> = tr_frag.select(&td_sel).collect();
-        if tds.len() < 11 || current_section.is_none() {
+        if current_section.is_none() {
             continue;
         }
 
-        // First td: market name + unit
-        let first_td_html = tds[0].html();
-        let (market, unit) = parse_market_name(&first_td_html);
+        // Get only direct <td> children of this <tr> (avoids picking up nested cells).
+        let tds: Vec<ElementRef> = tr
+            .children()
+            .filter_map(ElementRef::wrap)
+            .filter(|e| e.value().name() == "td")
+            .collect();
 
+        // Data rows must have exactly 11 or 12 columns.
+        if tds.len() < 11 {
+            continue;
+        }
+
+        // First td: market name + unit.
+        let (market, unit) = parse_market_name_from_elem(tds[0]);
         if market.is_empty() {
             continue;
         }
 
-        // Columns 2–7 (indices 1–6): daily prices
-        let mut prices: Vec<Option<f64>> = Vec::new();
-        for i in 1..=6 {
-            let cell_text = tds[i].text().collect::<String>().trim().to_string();
-            prices.push(parse_optional_f64(&cell_text));
-        }
+        // Columns 2–7 (indices 1–6): daily prices.
+        let prices: Vec<Option<f64>> = (1..=6)
+            .map(|i| parse_optional_f64(&tds[i].text().collect::<String>()))
+            .collect();
 
-        // Column 8 (index 7): VAR D-1
-        let var_d1_text = tds[7].text().collect::<String>().trim().to_string();
-        let var_d1_pct = parse_pct(&var_d1_text).unwrap_or(0.0);
+        // Column 8 (index 7): VAR D-1.
+        let var_d1_pct =
+            parse_pct(&tds[7].text().collect::<String>()).unwrap_or(0.0);
 
-        // Column 9 (index 8): VAR W-1
-        let var_w1_text = tds[8].text().collect::<String>().trim().to_string();
-        let var_w1_pct = parse_pct(&var_w1_text).unwrap_or(0.0);
+        // Column 9 (index 8): VAR W-1.
+        let var_w1_pct =
+            parse_pct(&tds[8].text().collect::<String>()).unwrap_or(0.0);
 
-        // Column 10 (index 9): AVG
+        // Column 10 (index 9): AVG.
         let avg_ytd = tds[9]
             .text()
             .collect::<String>()
@@ -287,7 +270,7 @@ fn extract_market_sections(doc: &Html) -> Result<Vec<MarketSection>, ParseError>
             .parse::<f64>()
             .unwrap_or(0.0);
 
-        // Column 11 (index 10): MAX
+        // Column 11 (index 10): MAX.
         let max_ytd = tds[10]
             .text()
             .collect::<String>()
@@ -295,17 +278,17 @@ fn extract_market_sections(doc: &Html) -> Result<Vec<MarketSection>, ParseError>
             .parse::<f64>()
             .unwrap_or(0.0);
 
-        // Column 12 (index 11): MIN
-        let min_ytd = if tds.len() > 11 {
-            tds[11]
-                .text()
-                .collect::<String>()
-                .trim()
-                .parse::<f64>()
-                .unwrap_or(0.0)
-        } else {
-            0.0
-        };
+        // Column 12 (index 11): MIN.
+        let min_ytd = tds
+            .get(11)
+            .map(|td| {
+                td.text()
+                    .collect::<String>()
+                    .trim()
+                    .parse::<f64>()
+                    .unwrap_or(0.0)
+            })
+            .unwrap_or(0.0);
 
         rows_buffer.push(MarketRow {
             market,
@@ -321,7 +304,7 @@ fn extract_market_sections(doc: &Html) -> Result<Vec<MarketSection>, ParseError>
         });
     }
 
-    // Flush last section
+    // Flush last section.
     if let Some(name) = current_section {
         if !rows_buffer.is_empty() {
             sections.push(MarketSection { name, rows: rows_buffer });
@@ -331,24 +314,12 @@ fn extract_market_sections(doc: &Html) -> Result<Vec<MarketSection>, ParseError>
     Ok(sections)
 }
 
-fn extract_section_name(raw: &str) -> String {
-    // Strip noise and extract just the section keyword
-    for keyword in &["ELECTRICITY", "GAS", "OIL", "OTHER"] {
-        if raw.contains(keyword) {
-            return keyword.to_string();
-        }
-    }
-    raw.to_string()
-}
-
-fn parse_market_name(td_html: &str) -> (String, String) {
-    let frag = Html::parse_fragment(td_html);
-    let root = frag.root_element();
-    let full_text = root.text().collect::<Vec<_>>();
-
-    // Unit is inside <font> tag; market name is the non-unit text
+/// Extract market name and unit from a `<td>` element directly.
+fn parse_market_name_from_elem(td: scraper::ElementRef) -> (String, String) {
     let font_sel = Selector::parse("font").unwrap();
-    let unit = frag
+
+    // Unit is inside <font> tag.
+    let unit = td
         .select(&font_sel)
         .next()
         .map(|e| {
@@ -361,21 +332,28 @@ fn parse_market_name(td_html: &str) -> (String, String) {
         })
         .unwrap_or_default();
 
-    // Market name: all text minus the unit portion, trimmed
-    let raw_full = full_text
-        .iter()
+    // All text of the td, minus the unit portion.
+    let full_text: String = td
+        .text()
         .map(|s| s.trim())
         .filter(|s| !s.is_empty())
         .collect::<Vec<_>>()
         .join(" ");
 
-    let unit_with_parens = format!("({})", unit);
-    let market = raw_full
-        .replace(&unit_with_parens, "")
-        .trim()
-        .to_string();
+    let unit_parens = format!("({})", unit);
+    let market = full_text.replace(&unit_parens, "").trim().to_string();
 
     (market, unit)
+}
+
+fn extract_section_name(raw: &str) -> String {
+    // Strip noise and extract just the section keyword
+    for keyword in &["ELECTRICITY", "GAS", "OIL", "OTHER"] {
+        if raw.contains(keyword) {
+            return keyword.to_string();
+        }
+    }
+    raw.to_string()
 }
 
 fn parse_optional_f64(s: &str) -> Option<f64> {

@@ -1,0 +1,1154 @@
+{
+  "metadata": {
+    "from": "\"Energy Cockpit\" <customer.page@energymarketprice.com>",
+    "to": "baudouin.vervrangen@aya.energy",
+    "subject": "My Energy Cockpit ",
+    "date": "Wed, 15 Apr 2026 10:01:11 +0200",
+    "message_id": "<27760-1822702368629822318@kraken>"
+  },
+  "report": {
+    "date": "April 15, 2026",
+    "title": "NLMK market update",
+    "news_items": [
+      {
+        "date": "2026-04-15",
+        "title": "SGE will collaborate with Spanish fuel producers.",
+        "summary": "Poland's SGE has entered into cooperation agreements with Spanish nuclear fuel manufacturers Enusa Industrias Avanzadas SA and GNF Enusa Nuclear Fuel SA to facilitate the rollout of BWRX-300 small modular reactors throughout Europe.\n\nAc",
+        "read_more_url": "https://www.energymarketprice.com/new/CP1.asp?Company=AYANV&ckid=3846&Group=NLMK+market+update&lang=En&UserID=80128&CockpitKey=45BD023A-77E7-42D6-9208-5F5958770A95&UserKey=6C9ED20B-FF3F-4C69-AC07-5BCACCA6BC94&NewsList=1178775,1178774,1178773"
+      },
+      {
+        "date": "2026-04-15",
+        "title": "The German industry association urges for more adaptable EU emissions trading and reduced electricity taxes.",
+        "summary": "The German Chambers of Industry and Commerce (DIHK) have urged for significant reforms to Germany's energy and climate policies to alleviate cost pressures on businesses. Their demands highlight four key areas for improvement, including",
+        "read_more_url": "https://www.energymarketprice.com/new/CP1.asp?Company=AYANV&ckid=3846&Group=NLMK+market+update&lang=En&UserID=80128&CockpitKey=45BD023A-77E7-42D6-9208-5F5958770A95&UserKey=6C9ED20B-FF3F-4C69-AC07-5BCACCA6BC94&NewsList=1178775,1178774,1178773"
+      },
+      {
+        "date": "2026-04-15",
+        "title": "War accelerates the EU's plan for reducing electricity taxes and transitioning away from fossil fuels more quickly.",
+        "summary": "The European Union intends to lower electricity taxes and expedite the adoption of clean technologies to reduce consumer vulnerability to rising oil and gas prices, as outlined in a draft document addressing the energy implications of t",
+        "read_more_url": "https://www.energymarketprice.com/new/CP1.asp?Company=AYANV&ckid=3846&Group=NLMK+market+update&lang=En&UserID=80128&CockpitKey=45BD023A-77E7-42D6-9208-5F5958770A95&UserKey=6C9ED20B-FF3F-4C69-AC07-5BCACCA6BC94&NewsList=1178775,1178774,1178773"
+      }
+    ],
+    "statistics": {
+      "price_dates": [
+        "7/4",
+        "8/4",
+        "9/4",
+        "10/4",
+        "13/4",
+        "14/4"
+      ],
+      "ytd_note": "* MAX, MIN, AVG - Since the beginning of the year",
+      "sections": [
+        {
+          "name": "ELECTRICITY",
+          "rows": [
+            {
+              "market": "Markets",
+              "unit": "",
+              "prices": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "var_d1_pct": 0.0,
+              "var_w1_pct": 0.0,
+              "avg_ytd": 0.0,
+              "max_ytd": 0.0,
+              "min_ytd": 0.0,
+              "trend_d1": "flat",
+              "trend_w1": "flat"
+            }
+          ]
+        },
+        {
+          "name": "ELECTRICITY",
+          "rows": [
+            {
+              "market": "BE spot",
+              "unit": "Eur/MWh",
+              "prices": [
+                86.12,
+                78.7,
+                113.93,
+                48.76,
+                124.29,
+                103.7
+              ],
+              "var_d1_pct": -16.57,
+              "var_w1_pct": 20.41,
+              "avg_ytd": 94.56,
+              "max_ytd": 146.22,
+              "min_ytd": 0.05,
+              "trend_d1": "down",
+              "trend_w1": "up"
+            },
+            {
+              "market": "BE M+1 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                95.01,
+                87.65,
+                88.51,
+                83.3,
+                84.57,
+                83.04
+              ],
+              "var_d1_pct": -1.81,
+              "var_w1_pct": -12.6,
+              "avg_ytd": 94.95,
+              "max_ytd": 119.21,
+              "min_ytd": 73.17,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "BE M+2 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                99.39,
+                91.28,
+                91.88,
+                89.79,
+                91.89,
+                90.6
+              ],
+              "var_d1_pct": -1.4,
+              "var_w1_pct": -8.84,
+              "avg_ytd": 85.44,
+              "max_ytd": 99.39,
+              "min_ytd": 70.45,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "BE M+3 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                97.52,
+                90.12,
+                93.28,
+                90.25,
+                92.54,
+                90.36
+              ],
+              "var_d1_pct": -2.36,
+              "var_w1_pct": -7.34,
+              "avg_ytd": 82.13,
+              "max_ytd": 106.77,
+              "min_ytd": 60.56,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "BE M+4 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                95.43,
+                86.74,
+                86.3,
+                82.71,
+                85.29,
+                83.29
+              ],
+              "var_d1_pct": -2.34,
+              "var_w1_pct": -12.72,
+              "avg_ytd": 79.28,
+              "max_ytd": 101.42,
+              "min_ytd": 65.42,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "BE Q+2 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                113.08,
+                104.09,
+                105.38,
+                101.44,
+                104.55,
+                101.43
+              ],
+              "var_d1_pct": -2.98,
+              "var_w1_pct": -10.3,
+              "avg_ytd": 85.57,
+              "max_ytd": 113.08,
+              "min_ytd": 67.33,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "BE Q+3 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                109.52,
+                100.16,
+                100.99,
+                98.16,
+                100.9,
+                98.53
+              ],
+              "var_d1_pct": -2.35,
+              "var_w1_pct": -10.04,
+              "avg_ytd": 94.99,
+              "max_ytd": 121.92,
+              "min_ytd": 80.08,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "BE Q+4 base",
+              "unit": "Eur/MWh",
+              "prices": [
+                80.49,
+                76.05,
+                76.9,
+                73.05,
+                73.83,
+                72.57
+              ],
+              "var_d1_pct": -1.71,
+              "var_w1_pct": -9.85,
+              "avg_ytd": 90.46,
+              "max_ytd": 116.4,
+              "min_ytd": 72.57,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "BE Y+1 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                92.92,
+                86.28,
+                87.47,
+                84.69,
+                86.01,
+                84.37
+              ],
+              "var_d1_pct": -1.9,
+              "var_w1_pct": -9.2,
+              "avg_ytd": 81.78,
+              "max_ytd": 95.77,
+              "min_ytd": 71.86,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT spot PUN base",
+              "unit": "EUR/MWh",
+              "prices": [
+                127.98,
+                122.68,
+                129.67,
+                120.95,
+                150.62,
+                140.19
+              ],
+              "var_d1_pct": -6.92,
+              "var_w1_pct": 9.55,
+              "avg_ytd": 130.52,
+              "max_ytd": 168.54,
+              "min_ytd": 86.34,
+              "trend_d1": "down",
+              "trend_w1": "up"
+            },
+            {
+              "market": "IT M+1 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                128.84,
+                115.93,
+                117.99,
+                112.94,
+                118.16,
+                114.04
+              ],
+              "var_d1_pct": -3.49,
+              "var_w1_pct": -11.49,
+              "avg_ytd": 121.54,
+              "max_ytd": 145.96,
+              "min_ytd": 99.06,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT M+2 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                142.14,
+                127.75,
+                129.67,
+                124.02,
+                128.87,
+                124.65
+              ],
+              "var_d1_pct": -3.27,
+              "var_w1_pct": -12.3,
+              "avg_ytd": 113.4,
+              "max_ytd": 142.14,
+              "min_ytd": 88.2,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT M+3 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                153.05,
+                138.69,
+                140.58,
+                134.62,
+                138.91,
+                135.04
+              ],
+              "var_d1_pct": -2.79,
+              "var_w1_pct": -11.77,
+              "avg_ytd": 111.46,
+              "max_ytd": 153.05,
+              "min_ytd": 83.31,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT M+4 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                147.37,
+                132.26,
+                133.92,
+                127.76,
+                131.72,
+                127.92
+              ],
+              "var_d1_pct": -2.88,
+              "var_w1_pct": -13.2,
+              "avg_ytd": 114.81,
+              "max_ytd": 161.91,
+              "min_ytd": 85.6,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT Q+2 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                146.13,
+                133.76,
+                135.64,
+                129.93,
+                133.82,
+                129.06
+              ],
+              "var_d1_pct": -3.56,
+              "var_w1_pct": -11.68,
+              "avg_ytd": 120.41,
+              "max_ytd": 159.0,
+              "min_ytd": 99.37,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT Q+3 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                134.02,
+                122.77,
+                125.0,
+                119.45,
+                123.12,
+                118.43
+              ],
+              "var_d1_pct": -3.81,
+              "var_w1_pct": -11.63,
+              "avg_ytd": 120.29,
+              "max_ytd": 156.47,
+              "min_ytd": 102.75,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT Q+4 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                91.24,
+                85.76,
+                86.69,
+                82.85,
+                84.61,
+                83.07
+              ],
+              "var_d1_pct": -1.82,
+              "var_w1_pct": -8.95,
+              "avg_ytd": 110.19,
+              "max_ytd": 140.58,
+              "min_ytd": 82.85,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT Y+1 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                106.75,
+                100.13,
+                101.36,
+                97.6,
+                100.22,
+                98.03
+              ],
+              "var_d1_pct": -2.19,
+              "var_w1_pct": -8.17,
+              "avg_ytd": 98.27,
+              "max_ytd": 110.29,
+              "min_ytd": 86.19,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "FR spot base",
+              "unit": "EUR/MWh",
+              "prices": [
+                54.17,
+                51.79,
+                39.93,
+                10.94,
+                90.56,
+                70.31
+              ],
+              "var_d1_pct": -22.36,
+              "var_w1_pct": 29.8,
+              "avg_ytd": 69.14,
+              "max_ytd": 134.7,
+              "min_ytd": -3.56,
+              "trend_d1": "down",
+              "trend_w1": "up"
+            },
+            {
+              "market": "FR M+1 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                26.56,
+                24.34,
+                23.77,
+                25.46,
+                25.79,
+                24.77
+              ],
+              "var_d1_pct": -3.96,
+              "var_w1_pct": -6.74,
+              "avg_ytd": 57.58,
+              "max_ytd": 103.79,
+              "min_ytd": 20.2,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "FR M+2 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                28.98,
+                27.82,
+                27.94,
+                28.46,
+                28.98,
+                28.23
+              ],
+              "var_d1_pct": -2.59,
+              "var_w1_pct": -2.59,
+              "avg_ytd": 40.2,
+              "max_ytd": 78.1,
+              "min_ytd": 17.08,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "FR M+3 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                41.2,
+                40.5,
+                39.63,
+                38.37,
+                40.56,
+                39.86
+              ],
+              "var_d1_pct": -1.73,
+              "var_w1_pct": -3.25,
+              "avg_ytd": 30.24,
+              "max_ytd": 48.01,
+              "min_ytd": 15.01,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "FR M+4 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                35.8,
+                33.5,
+                33.99,
+                32.4,
+                34.6,
+                34.31
+              ],
+              "var_d1_pct": -0.84,
+              "var_w1_pct": -4.16,
+              "avg_ytd": 28.68,
+              "max_ytd": 45.67,
+              "min_ytd": 17.8,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "FR Q+2 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                93.74,
+                85.12,
+                85.93,
+                84.05,
+                85.66,
+                82.83
+              ],
+              "var_d1_pct": -3.3,
+              "var_w1_pct": -11.64,
+              "avg_ytd": 46.04,
+              "max_ytd": 97.71,
+              "min_ytd": 33.32,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "FR Q+3 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                98.27,
+                90.65,
+                91.45,
+                89.91,
+                91.56,
+                88.59
+              ],
+              "var_d1_pct": -3.24,
+              "var_w1_pct": -9.85,
+              "avg_ytd": 80.09,
+              "max_ytd": 102.31,
+              "min_ytd": 64.55,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "FR Q+4 base",
+              "unit": "EUR/MWh",
+              "prices": [
+                25.42,
+                25.23,
+                25.16,
+                25.6,
+                26.23,
+                25.76
+              ],
+              "var_d1_pct": -1.79,
+              "var_w1_pct": 1.34,
+              "avg_ytd": 74.41,
+              "max_ytd": 103.55,
+              "min_ytd": 23.85,
+              "trend_d1": "down",
+              "trend_w1": "up"
+            },
+            {
+              "market": "FR Base Y+1",
+              "unit": "EUR/MWh",
+              "prices": [
+                57.66,
+                55.07,
+                55.21,
+                55.17,
+                56.22,
+                54.71
+              ],
+              "var_d1_pct": -2.69,
+              "var_w1_pct": -5.12,
+              "avg_ytd": 53.05,
+              "max_ytd": 61.67,
+              "min_ytd": 48.71,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            }
+          ]
+        },
+        {
+          "name": "GAS",
+          "rows": [
+            {
+              "market": "Gas BE ZTP spot",
+              "unit": "EUR/MWh",
+              "prices": [
+                52.21,
+                45.47,
+                45.97,
+                44.32,
+                47.05,
+                42.89
+              ],
+              "var_d1_pct": -8.84,
+              "var_w1_pct": -17.84,
+              "avg_ytd": 40.78,
+              "max_ytd": 61.24,
+              "min_ytd": 28.74,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "Gas BE ZTP M+1",
+              "unit": "EUR/MWh",
+              "prices": [
+                53.1,
+                45.09,
+                46.05,
+                43.36,
+                46.22,
+                43.21
+              ],
+              "var_d1_pct": -6.52,
+              "var_w1_pct": -18.62,
+              "avg_ytd": 40.56,
+              "max_ytd": 61.69,
+              "min_ytd": 27.37,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "Gas BE ZTP M+2",
+              "unit": "EUR/MWh",
+              "prices": [
+                52.88,
+                45.03,
+                46.05,
+                43.28,
+                45.91,
+                42.96
+              ],
+              "var_d1_pct": -6.41,
+              "var_w1_pct": -18.76,
+              "avg_ytd": 39.63,
+              "max_ytd": 61.53,
+              "min_ytd": 26.71,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "TTF M+3",
+              "unit": "EUR/MWh",
+              "prices": [
+                53.24,
+                45.43,
+                46.28,
+                43.58,
+                46.06,
+                43.13
+              ],
+              "var_d1_pct": -6.36,
+              "var_w1_pct": -18.99,
+              "avg_ytd": 39.05,
+              "max_ytd": 61.51,
+              "min_ytd": 26.51,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "TTF M+4",
+              "unit": "EUR/MWh",
+              "prices": [
+                53.15,
+                45.39,
+                46.21,
+                43.49,
+                45.79,
+                42.96
+              ],
+              "var_d1_pct": -6.18,
+              "var_w1_pct": -19.18,
+              "avg_ytd": 38.39,
+              "max_ytd": 61.15,
+              "min_ytd": 26.1,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "Gas BE ZTP Q+2",
+              "unit": "EUR/MWh",
+              "prices": [
+                52.15,
+                44.75,
+                45.59,
+                42.74,
+                44.95,
+                42.05
+              ],
+              "var_d1_pct": -6.45,
+              "var_w1_pct": -19.37,
+              "avg_ytd": 37.38,
+              "max_ytd": 60.65,
+              "min_ytd": 25.64,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "Gas BE ZTP Q+3",
+              "unit": "EUR/MWh",
+              "prices": [
+                51.2,
+                44.01,
+                44.63,
+                41.9,
+                43.66,
+                40.91
+              ],
+              "var_d1_pct": -6.3,
+              "var_w1_pct": -20.11,
+              "avg_ytd": 37.06,
+              "max_ytd": 59.7,
+              "min_ytd": 26.0,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "TTF Q+4",
+              "unit": "Eur/MWh",
+              "prices": [
+                40.03,
+                35.75,
+                35.9,
+                34.03,
+                35.17,
+                33.5
+              ],
+              "var_d1_pct": -4.75,
+              "var_w1_pct": -16.3,
+              "avg_ytd": 35.97,
+              "max_ytd": 58.17,
+              "min_ytd": 26.89,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "Gas BE ZTP Y+1",
+              "unit": "EUR/MWh",
+              "prices": [
+                41.39,
+                36.7,
+                36.79,
+                34.85,
+                36.13,
+                34.26
+              ],
+              "var_d1_pct": -5.19,
+              "var_w1_pct": -17.23,
+              "avg_ytd": 31.06,
+              "max_ytd": 46.38,
+              "min_ytd": 24.38,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "PEG spot",
+              "unit": "EUR/MWh",
+              "prices": [
+                51.52,
+                44.31,
+                44.5,
+                42.58,
+                45.13,
+                41.82
+              ],
+              "var_d1_pct": -7.34,
+              "var_w1_pct": -18.83,
+              "avg_ytd": 40.07,
+              "max_ytd": 61.51,
+              "min_ytd": 27.03,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "PEG M+1",
+              "unit": "EUR/MWh",
+              "prices": [
+                52.66,
+                44.74,
+                45.43,
+                42.67,
+                45.51,
+                42.4
+              ],
+              "var_d1_pct": -6.82,
+              "var_w1_pct": -19.48,
+              "avg_ytd": 39.95,
+              "max_ytd": 61.47,
+              "min_ytd": 26.68,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "PEG M+2",
+              "unit": "EUR/MWh",
+              "prices": [
+                52.79,
+                44.81,
+                45.57,
+                42.81,
+                45.42,
+                42.49
+              ],
+              "var_d1_pct": -6.45,
+              "var_w1_pct": -19.51,
+              "avg_ytd": 39.25,
+              "max_ytd": 61.61,
+              "min_ytd": 26.39,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "PEG M+3",
+              "unit": "EUR/MWh",
+              "prices": [
+                52.5,
+                44.77,
+                45.74,
+                42.88,
+                45.51,
+                42.63
+              ],
+              "var_d1_pct": -6.33,
+              "var_w1_pct": -18.81,
+              "avg_ytd": 38.14,
+              "max_ytd": 61.29,
+              "min_ytd": 25.72,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "PEG M+4",
+              "unit": "EUR/MWh",
+              "prices": [
+                52.89,
+                44.98,
+                45.68,
+                42.7,
+                45.02,
+                42.2
+              ],
+              "var_d1_pct": -6.26,
+              "var_w1_pct": -20.21,
+              "avg_ytd": 37.22,
+              "max_ytd": 60.13,
+              "min_ytd": 25.26,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "PEG Q+2",
+              "unit": "EUR/MWh",
+              "prices": [
+                51.55,
+                44.5,
+                44.92,
+                41.9,
+                44.41,
+                41.39
+              ],
+              "var_d1_pct": -6.8,
+              "var_w1_pct": -19.71,
+              "avg_ytd": 37.21,
+              "max_ytd": 60.65,
+              "min_ytd": 25.41,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "PEG Q+3",
+              "unit": "EUR/MWh",
+              "prices": [
+                50.14,
+                42.89,
+                43.76,
+                41.3,
+                42.59,
+                39.92
+              ],
+              "var_d1_pct": -6.27,
+              "var_w1_pct": -20.38,
+              "avg_ytd": 36.51,
+              "max_ytd": 59.51,
+              "min_ytd": 25.54,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "PEG Q+4",
+              "unit": "EUR/MWh",
+              "prices": [
+                38.35,
+                34.53,
+                35.53,
+                32.77,
+                34.47,
+                32.85
+              ],
+              "var_d1_pct": -4.7,
+              "var_w1_pct": -14.33,
+              "avg_ytd": 34.69,
+              "max_ytd": 57.29,
+              "min_ytd": 25.83,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "PEG Y+1",
+              "unit": "EUR/MWh",
+              "prices": [
+                40.97,
+                36.27,
+                36.52,
+                34.52,
+                35.81,
+                33.98
+              ],
+              "var_d1_pct": -5.11,
+              "var_w1_pct": -17.05,
+              "avg_ytd": 30.65,
+              "max_ytd": 45.96,
+              "min_ytd": 23.86,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT PSV Gas spot",
+              "unit": "EUR/MWh",
+              "prices": [
+                51.0,
+                47.0,
+                46.85,
+                46.0,
+                46.0,
+                46.0
+              ],
+              "var_d1_pct": 0.0,
+              "var_w1_pct": -9.8,
+              "avg_ytd": 42.85,
+              "max_ytd": 64.1,
+              "min_ytd": 29.6,
+              "trend_d1": "flat",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT PSV Gas M+1",
+              "unit": "EUR/MWh",
+              "prices": [
+                55.71,
+                47.49,
+                48.33,
+                45.41,
+                48.39,
+                45.12
+              ],
+              "var_d1_pct": -6.76,
+              "var_w1_pct": -19.0,
+              "avg_ytd": 42.55,
+              "max_ytd": 63.38,
+              "min_ytd": 29.7,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT PSV Gas M+2",
+              "unit": "EUR/MWh",
+              "prices": [
+                55.99,
+                48.15,
+                48.72,
+                46.08,
+                48.76,
+                45.59
+              ],
+              "var_d1_pct": -6.51,
+              "var_w1_pct": -18.58,
+              "avg_ytd": 42.15,
+              "max_ytd": 64.62,
+              "min_ytd": 28.43,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT PSV Gas M+3",
+              "unit": "EUR/MWh",
+              "prices": [
+                57.05,
+                49.11,
+                49.9,
+                46.83,
+                49.68,
+                46.62
+              ],
+              "var_d1_pct": -6.16,
+              "var_w1_pct": -18.28,
+              "avg_ytd": 41.59,
+              "max_ytd": 64.57,
+              "min_ytd": 28.33,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT PSV Gas M+4",
+              "unit": "EUR/MWh",
+              "prices": [
+                55.86,
+                47.64,
+                48.46,
+                45.44,
+                47.69,
+                44.87
+              ],
+              "var_d1_pct": -5.91,
+              "var_w1_pct": -19.67,
+              "avg_ytd": 40.78,
+              "max_ytd": 63.87,
+              "min_ytd": 28.43,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT PSV Gas Quarter Q+2",
+              "unit": "EUR/MWh",
+              "prices": [
+                53.93,
+                46.58,
+                47.13,
+                44.38,
+                46.75,
+                43.67
+              ],
+              "var_d1_pct": -6.58,
+              "var_w1_pct": -19.01,
+              "avg_ytd": 40.49,
+              "max_ytd": 64.22,
+              "min_ytd": 28.68,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT PSV Gas Quarter Q+3",
+              "unit": "EUR/MWh",
+              "prices": [
+                52.4,
+                45.41,
+                46.06,
+                43.24,
+                45.02,
+                42.25
+              ],
+              "var_d1_pct": -6.16,
+              "var_w1_pct": -19.36,
+              "avg_ytd": 39.4,
+              "max_ytd": 62.21,
+              "min_ytd": 28.42,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT PSV Gas Quarter Q+4",
+              "unit": "EUR/MWh",
+              "prices": [
+                41.0,
+                37.09,
+                38.01,
+                35.36,
+                36.9,
+                35.25
+              ],
+              "var_d1_pct": -4.5,
+              "var_w1_pct": -14.04,
+              "avg_ytd": 37.35,
+              "max_ytd": 59.58,
+              "min_ytd": 28.53,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            },
+            {
+              "market": "IT PSV Gas Cal Y+1",
+              "unit": "EUR/MWh",
+              "prices": [
+                43.22,
+                38.7,
+                38.9,
+                36.88,
+                38.26,
+                36.34
+              ],
+              "var_d1_pct": -5.03,
+              "var_w1_pct": -15.92,
+              "avg_ytd": 33.21,
+              "max_ytd": 48.29,
+              "min_ytd": 26.6,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            }
+          ]
+        },
+        {
+          "name": "OIL",
+          "rows": [
+            {
+              "market": "Brent EUR/bbl",
+              "unit": "EUR/bbl",
+              "prices": [
+                94.55,
+                80.94,
+                82.09,
+                81.29,
+                85.04,
+                80.38
+              ],
+              "var_d1_pct": -5.48,
+              "var_w1_pct": -14.99,
+              "avg_ytd": 69.67,
+              "max_ytd": 102.93,
+              "min_ytd": 51.32,
+              "trend_d1": "down",
+              "trend_w1": "down"
+            }
+          ]
+        },
+        {
+          "name": "OTHER",
+          "rows": [
+            {
+              "market": "CO2 EUA spot",
+              "unit": "EUR/tonne",
+              "prices": [
+                70.18,
+                70.42,
+                72.42,
+                71.53,
+                71.29,
+                73.55
+              ],
+              "var_d1_pct": 3.17,
+              "var_w1_pct": 4.8,
+              "avg_ytd": 75.58,
+              "max_ytd": 90.24,
+              "min_ytd": 62.37,
+              "trend_d1": "up",
+              "trend_w1": "up"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

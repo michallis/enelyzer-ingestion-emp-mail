@@ -1,0 +1,198 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EmpMail",
+  "description": "Root parsed structure of an EMP (Energy Market Price) cockpit email.",
+  "type": "object",
+  "required": ["metadata", "report"],
+  "additionalProperties": false,
+  "properties": {
+    "metadata": {
+      "$ref": "#/definitions/EmailMetadata"
+    },
+    "report": {
+      "$ref": "#/definitions/Report"
+    }
+  },
+  "definitions": {
+    "EmailMetadata": {
+      "description": "Standard email header fields extracted from the raw email.",
+      "type": "object",
+      "required": ["from", "to", "subject", "date"],
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "description": "Sender address (e.g. 'Energy Cockpit <customer.page@energymarketprice.com>')",
+          "type": "string"
+        },
+        "to": {
+          "description": "Recipient address",
+          "type": "string"
+        },
+        "subject": {
+          "description": "Email subject (decoded from encoded-word if necessary)",
+          "type": "string"
+        },
+        "date": {
+          "description": "Date header value (e.g. 'Wed, 15 Apr 2026 10:01:11 +0200')",
+          "type": "string"
+        },
+        "message_id": {
+          "description": "Message-ID header value",
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "Report": {
+      "description": "Structured report content extracted from the HTML body.",
+      "type": "object",
+      "required": ["date", "title", "news_items", "statistics"],
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "description": "Publication date displayed in the report header (e.g. 'April 15, 2026')",
+          "type": "string"
+        },
+        "title": {
+          "description": "Market group title shown in the report header (e.g. 'NLMK market update')",
+          "type": "string"
+        },
+        "news_items": {
+          "description": "News/article items included in the report",
+          "type": "array",
+          "items": { "$ref": "#/definitions/NewsItem" }
+        },
+        "statistics": {
+          "$ref": "#/definitions/Statistics"
+        }
+      }
+    },
+    "NewsItem": {
+      "description": "A news article summarised in the report.",
+      "type": "object",
+      "required": ["date", "title", "summary"],
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "description": "Date of the news item (e.g. '2026-04-15')",
+          "type": "string"
+        },
+        "title": {
+          "description": "Headline / title of the news article",
+          "type": "string"
+        },
+        "summary": {
+          "description": "Short excerpt / summary (may be truncated in the email)",
+          "type": "string"
+        },
+        "read_more_url": {
+          "description": "URL for the full article ('Read More' link)",
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "Statistics": {
+      "description": "The full statistics table from the report.",
+      "type": "object",
+      "required": ["price_dates", "ytd_note", "sections"],
+      "additionalProperties": false,
+      "properties": {
+        "price_dates": {
+          "description": "Trading dates used as column headers (e.g. ['7/4', '8/4', '9/4', '10/4', '13/4', '14/4'])",
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "ytd_note": {
+          "description": "Note about the AVG/MAX/MIN year-to-date columns",
+          "type": "string"
+        },
+        "sections": {
+          "description": "Market sections (ELECTRICITY, GAS, OIL, OTHER)",
+          "type": "array",
+          "items": { "$ref": "#/definitions/MarketSection" },
+          "minItems": 1
+        }
+      }
+    },
+    "MarketSection": {
+      "description": "A named group of market price rows.",
+      "type": "object",
+      "required": ["name", "rows"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "description": "Section name in uppercase (e.g. 'ELECTRICITY', 'GAS', 'OIL', 'OTHER')",
+          "type": "string",
+          "enum": ["ELECTRICITY", "GAS", "OIL", "OTHER"]
+        },
+        "rows": {
+          "description": "Market price rows within this section",
+          "type": "array",
+          "items": { "$ref": "#/definitions/MarketRow" }
+        }
+      }
+    },
+    "MarketRow": {
+      "description": "A single market instrument row in the statistics table.",
+      "type": "object",
+      "required": [
+        "market", "unit", "prices",
+        "var_d1_pct", "var_w1_pct",
+        "avg_ytd", "max_ytd", "min_ytd",
+        "trend_d1", "trend_w1"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "market": {
+          "description": "Instrument name (e.g. 'BE spot', 'IT M+1 base', 'Gas BE ZTP M+2')",
+          "type": "string",
+          "minLength": 1
+        },
+        "unit": {
+          "description": "Price unit (e.g. 'EUR/MWh', 'EUR/bbl', 'EUR/tonne')",
+          "type": "string",
+          "minLength": 1
+        },
+        "prices": {
+          "description": "Daily closing prices for each date in statistics.price_dates. null = no value available.",
+          "type": "array",
+          "items": { "type": ["number", "null"] },
+          "minItems": 1
+        },
+        "var_d1_pct": {
+          "description": "Day-over-day percentage change (e.g. -16.57 represents -16.57%)",
+          "type": "number"
+        },
+        "var_w1_pct": {
+          "description": "Week-over-week percentage change (e.g. 20.41 represents +20.41%)",
+          "type": "number"
+        },
+        "avg_ytd": {
+          "description": "Year-to-date average price",
+          "type": "number"
+        },
+        "max_ytd": {
+          "description": "Year-to-date maximum price",
+          "type": "number"
+        },
+        "min_ytd": {
+          "description": "Year-to-date minimum price",
+          "type": "number"
+        },
+        "trend_d1": {
+          "description": "Price movement direction derived from var_d1_pct",
+          "$ref": "#/definitions/Trend"
+        },
+        "trend_w1": {
+          "description": "Price movement direction derived from var_w1_pct",
+          "$ref": "#/definitions/Trend"
+        }
+      }
+    },
+    "Trend": {
+      "description": "Price movement direction.",
+      "type": "string",
+      "enum": ["up", "down", "flat"]
+    }
+  }
+}
